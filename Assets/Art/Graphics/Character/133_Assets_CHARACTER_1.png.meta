@@ -67,9 +67,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -2827,7 +2827,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      133_Assets_CHARACTER_1_10: -2033538903
+      133_Assets_CHARACTER_1_21: -927298275
       133_Assets_CHARACTER_1_19: 2064808786
       133_Assets_CHARACTER_1_104: -206811840
       133_Assets_CHARACTER_1_85: -900387517
@@ -2861,8 +2861,8 @@ TextureImporter:
       133_Assets_CHARACTER_1_105: -1503614030
       133_Assets_CHARACTER_1_58: 1932872232
       133_Assets_CHARACTER_1_92: -2076218991
-      133_Assets_CHARACTER_1_22: -1887402092
       133_Assets_CHARACTER_1_91: 1379552387
+      133_Assets_CHARACTER_1_22: -1887402092
       133_Assets_CHARACTER_1_83: -763531485
       133_Assets_CHARACTER_1_15: 1335967736
       133_Assets_CHARACTER_1_68: -255197408
@@ -2952,7 +2952,7 @@ TextureImporter:
       133_Assets_CHARACTER_1_35: 1648213126
       133_Assets_CHARACTER_1_41: 229700347
       133_Assets_CHARACTER_1_55: -1506394358
-      133_Assets_CHARACTER_1_21: -927298275
+      133_Assets_CHARACTER_1_10: -2033538903
       133_Assets_CHARACTER_1_38: -1038209214
       133_Assets_CHARACTER_1_16: -1649411391
   spritePackingTag: 
