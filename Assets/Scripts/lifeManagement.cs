@@ -36,7 +36,7 @@ public class lifeManagement : MonoBehaviour
     // Collision avec l'ennemmi : on décrémente les points de vie courants du joueur
     private void OnCollisionEnter(Collision collision)
     {
-        // Teste si le GameObject avec lequel on est entré en collision porte le tag Enemy
+        // Teste si le GameObject avec lequel on est entr? en collision porte le tag Enemy
         if (collision.gameObject.CompareTag("Enemy"))
         {
             _lifePoint -= _damageValue;
