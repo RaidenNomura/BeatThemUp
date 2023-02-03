@@ -7,6 +7,8 @@ public class jumpManagement : MonoBehaviour
     #region Exposed
 
     [SerializeField] AnimationCurve _jumpCurve;
+    [SerializeField] float _jumpHeight = 3f;
+    [SerializeField] float _jumpDuration = 3f;
 
     #endregion
 
@@ -24,7 +26,16 @@ public class jumpManagement : MonoBehaviour
 
     private void Update()
     {
-
+        if (_jumpTimer < _jumpDuration)
+        {
+            _jumpTimer += Time.deltaTime;
+            float y = _jumpCurve.Evaluate(_jumpTimer / _jumpDuration);
+            _graphics.localPosition = new Vector3(transform.localPosition.x, y * _jumpHeight, transform.localPosition.z);
+        }
+        else
+        {
+            _jumpTimer = 0f;
+        }
     }
 
     #endregion
