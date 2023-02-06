@@ -34,7 +34,7 @@ public class lifeManagement : MonoBehaviour
     #region Collisions
 
     // Collision avec l'ennemmi : on décrémente les points de vie courants du joueur
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Teste si le GameObject avec lequel on est entr? en collision porte le tag Enemy
         if (collision.gameObject.CompareTag("Enemy"))
