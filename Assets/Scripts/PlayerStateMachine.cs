@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using TMPro;
 using UnityEngine;
 
 enum PlayerStateMode
@@ -12,13 +11,9 @@ enum PlayerStateMode
 }
 
 
-public class PlayerStateMachine : StateMachineBehaviour
+public class PlayerStateMachine : MonoBehaviour
 {
     #region exposed
-
-    [SerializeField]
-    float roll_Duration = 0.5f;
-
 
     #endregion
 
@@ -110,9 +105,6 @@ public class PlayerStateMachine : StateMachineBehaviour
     private PlayerStateMode _currentState;
 
     private Animator _animator;
-
-    private float _endRollTime;
-
 
     #endregion
 }
