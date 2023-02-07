@@ -70,14 +70,18 @@ public class PlayerStateMachine : MonoBehaviour
         switch (_currentState)
         {
             case PlayerStateMode.WALK:
-                _animator.SetFloat("MoveSpeedX", Input.GetAxis("Horizontal")); //check the name... maybe is MoveSpeedX
-                _animator.SetFloat("MoveSpeedY", Input.GetAxis("Vertical"));
+                float dir_X = Input.GetAxis("Horizontal");
+                float dir_Y = Input.GetAxis("Vertical");
+                float moveSpeedXY = Mathf.Abs(dir_X) + Mathf.Abs(dir_Y);
+                _animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
+                //_animator.SetFloat("moveSpeed", Input.GetAxis("Vertical"));
+
                 break;
 
             case PlayerStateMode.SPRINT:
 
-                _animator.SetFloat("MoveSpeedX", Input.GetAxis("Horizontal")); //check the name... maybe is MoveSpeedX
-                _animator.SetFloat("MoveSpeedY", Input.GetAxis("Vertical"));
+                _animator.SetFloat("moveSpeed", Input.GetAxis("Horizontal")); //check the name... maybe is MoveSpeedX
+                _animator.SetFloat("moveSpeed", Input.GetAxis("Vertical"));
 
                 if (Input.GetButtonUp("Fire3"))
                 {
