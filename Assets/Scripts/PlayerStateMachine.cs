@@ -5,6 +5,7 @@ using UnityEngine;
 
 enum PlayerStateMode
 {
+    IDLE,
     WALK,
     SPRINT,
     ATTACK
@@ -27,7 +28,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Start()
     {
-        TransitionToState(PlayerStateMode.WALK);
+        TransitionToState(PlayerStateMode.IDLE);
     }
     void Update()
     {
@@ -41,10 +42,15 @@ public class PlayerStateMachine : MonoBehaviour
     {
         switch (_currentState)
         {
+            case PlayerStateMode.IDLE:
+                break;
             case PlayerStateMode.WALK:
                 break;
             case PlayerStateMode.SPRINT:
                 _animator.SetBool("isSprinting", true);
+                break;
+            case PlayerStateMode.ATTACK:
+                _animator.SetBool("isAttacking", true);
                 break;
             default:
                 break;
@@ -55,10 +61,15 @@ public class PlayerStateMachine : MonoBehaviour
     {
         switch (_currentState)
         {
+            case PlayerStateMode.IDLE:
+                break;
             case PlayerStateMode.WALK:
                 break;
             case PlayerStateMode.SPRINT:
                 _animator.SetBool("isSprinting", false);
+                break;
+            case PlayerStateMode.ATTACK:
+                _animator.SetBool("isAttacking", false);
                 break;
             default:
                 break;
@@ -69,23 +80,41 @@ public class PlayerStateMachine : MonoBehaviour
     {
         switch (_currentState)
         {
-            case PlayerStateMode.WALK:
-                float dir_X = Input.GetAxis("Horizontal");
-                float dir_Y = Input.GetAxis("Vertical");
-                float moveSpeedXY = Mathf.Abs(dir_X) + Mathf.Abs(dir_Y);
-                _animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
-                //_animator.SetFloat("moveSpeed", Input.GetAxis("Vertical"));
+            case PlayerStateMode.IDLE:
 
+                if (Input.GetKeyDown(KeyCode.W)) // en idle on peut attack
+                {
+                    Debug.Log("W is press");
+                    TransitionToState(PlayerStateMode.ATTACK);
+                }
                 break;
 
-            case PlayerStateMode.SPRINT:
+            case PlayerStateMode.WALK:
 
-                _animator.SetFloat("moveSpeed", Input.GetAxis("Horizontal")); //check the name... maybe is MoveSpeedX
-                _animator.SetFloat("moveSpeed", Input.GetAxis("Vertical"));
+                float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
+                _animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
 
-                if (Input.GetButtonUp("Fire3"))
+                if (Input.GetKeyDown(KeyCode.X)) //si on walk on peut sprint
+                {
+                    Debug.Log("X is press");
+                    TransitionToState(PlayerStateMode.SPRINT);
+                }
+                break;
+
+            case PlayerStateMode.SPRINT: //on suppose quon ne peut sprinter que si on WALK
+
+                if (Input.GetKeyDown(KeyCode.X)) //si on arrete de sprint on passe en walk
                 {
                     TransitionToState(PlayerStateMode.WALK);
+                }
+                break;
+
+            case PlayerStateMode.ATTACK: //on attack depuis la position idle
+
+                if (Input.GetKeyUp(KeyCode.W)) //on retourne en IDLE apres atk
+                {
+                    Debug.Log("W is release");
+                    TransitionToState(PlayerStateMode.IDLE);
                 }
                 break;
 
