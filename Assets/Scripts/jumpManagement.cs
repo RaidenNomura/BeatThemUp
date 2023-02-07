@@ -24,19 +24,25 @@ public class jumpManagement : MonoBehaviour
 
     }
 
+
     private void Update()
     {
         if (Input.GetButton("Jump"))
+            isJumping = true;
         {
-            if (_jumpTimer < _jumpDuration)
+            if (isJumping)
             {
-                _jumpTimer += Time.deltaTime;
-                float y = _jumpCurve.Evaluate(_jumpTimer / _jumpDuration);
-                _graphics.localPosition = new Vector3(_graphics.localPosition.x, y * _jumpHeight, _graphics.localPosition.z);
-            }
-            else
-            {
-                _jumpTimer = 0f;
+                if (_jumpTimer < _jumpDuration)
+                {
+                    _jumpTimer += Time.deltaTime;
+                    float y = _jumpCurve.Evaluate(_jumpTimer / _jumpDuration);
+                    _graphics.localPosition = new Vector3(_graphics.localPosition.x, y * _jumpHeight, _graphics.localPosition.z);
+                }
+                else if (_jumpTimer >= _jumpDuration)
+                {
+                    _jumpTimer = 0f;
+                    isJumping = false;
+                }
             }
         }
     }
@@ -53,6 +59,7 @@ public class jumpManagement : MonoBehaviour
 
     private Transform _graphics;
     private float _jumpTimer;
+    private bool isJumping = false;
 
     #endregion
 }
