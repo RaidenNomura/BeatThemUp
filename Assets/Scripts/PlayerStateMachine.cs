@@ -82,6 +82,9 @@ public class PlayerStateMachine : MonoBehaviour
         {
             case PlayerStateMode.IDLE:
 
+                float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
+                _animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
+
                 if (Input.GetKeyDown(KeyCode.W)) // en idle on peut attack
                 {
                     Debug.Log("W is press");
@@ -91,8 +94,8 @@ public class PlayerStateMachine : MonoBehaviour
 
             case PlayerStateMode.WALK:
 
-                float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
-                _animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
+                //float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
+                //_animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
 
                 if (Input.GetKeyDown(KeyCode.X)) //si on walk on peut sprint
                 {
