@@ -27,31 +27,32 @@ public class jumpManagement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButton("Jump"))
-            isJumping = true;
-        {
-            if (isJumping)
-            {
-                if (_jumpTimer < _jumpDuration)
-                {
-                    _jumpTimer += Time.deltaTime;
-                    float y = _jumpCurve.Evaluate(_jumpTimer / _jumpDuration);
-                    _graphics.localPosition = new Vector3(_graphics.localPosition.x, y * _jumpHeight, _graphics.localPosition.z);
-                }
-                else if (_jumpTimer >= _jumpDuration)
-                {
-                    _jumpTimer = 0f;
-                    isJumping = false;
-                }
-            }
-        }
+        jump();
     }
 
     #endregion
 
     #region Methods
 
-
+    void jump()
+    {
+        if (Input.GetButton("Jump"))
+            isJumping = true;
+        if (isJumping)
+        {
+            if (_jumpTimer < _jumpDuration)
+            {
+                _jumpTimer += Time.deltaTime;
+                float y = _jumpCurve.Evaluate(_jumpTimer / _jumpDuration);
+                _graphics.localPosition = new Vector3(_graphics.localPosition.x, y * _jumpHeight, _graphics.localPosition.z);
+            }
+            else if (_jumpTimer >= _jumpDuration)
+            {
+                _jumpTimer = 0f;
+                isJumping = false;
+            }
+        }
+    }
 
     #endregion
 

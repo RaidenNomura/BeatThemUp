@@ -6,7 +6,8 @@ public class EnemyBehaviour : MonoBehaviour
 {
     #region Exposed
 
-
+    [SerializeField] private float _limitNearTarget = 1f;
+    [SerializeField] private float _waitingTimeBeforeAttack = 1f;
 
     #endregion
 
@@ -19,9 +20,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (_playerDetected)
+        if (_playerDetected && !IsTargetNearLimit())
         {
             transform.position = Vector2.MoveTowards(transform.position, _moveTarget.position, Time.deltaTime);
+        }
+        if (IsTargetNearLimit())
+        {
+            _attackTimer += Time.deltaTime;
+            if (_attackTimer >= _waitingTimeBeforeAttack)
+            {
+                _attackTimer = 0f;
+            }
         }
     }
 
@@ -39,12 +48,18 @@ public class EnemyBehaviour : MonoBehaviour
         _playerDetected = false;
     }
 
+    bool IsTargetNearLimit()
+    {
+        return Vector2.Distance(transform.position, _moveTarget.position) < _limitNearTarget;
+    }
+
     #endregion
 
     #region Private & Protected
 
     private bool _playerDetected = false;
     private Transform _moveTarget;
+    private float _attackTimer;
 
     #endregion
 }
