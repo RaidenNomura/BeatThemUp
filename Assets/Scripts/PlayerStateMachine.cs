@@ -10,6 +10,7 @@ enum PlayerStateMode
     SPRINT,
     ATTACK,
     HIT,
+    PICK
 }
 
 
@@ -56,6 +57,9 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerStateMode.HIT:
                 _animator.SetBool("isHurting", true) ;
                 break;
+            case PlayerStateMode.PICK:
+                _animator.SetBool("isPick", true);
+                break;
             default:
                 break;
         }
@@ -77,6 +81,9 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
             case PlayerStateMode.HIT:
                 _animator.SetBool("isHurting", false);
+                break;
+            case PlayerStateMode.PICK:
+                _animator.SetBool("isPick", false);
                 break;
             default:
                 break;
@@ -103,6 +110,12 @@ public class PlayerStateMachine : MonoBehaviour
                 {
                     Debug.Log("W is press");
                     TransitionToState(PlayerStateMode.ATTACK);
+                }
+
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    Debug.Log("C is press");
+                    TransitionToState(PlayerStateMode.PICK);
                 }
                 break;
 
@@ -145,6 +158,15 @@ public class PlayerStateMachine : MonoBehaviour
                 }
                 break;
             case PlayerStateMode.HIT:
+                break;
+
+            case PlayerStateMode.PICK:
+
+                if (Input.GetKeyUp(KeyCode.C))
+                {
+                    Debug.Log("C is release");
+                    TransitionToState(PlayerStateMode.IDLE);
+                }
                 break;
 
             default:
