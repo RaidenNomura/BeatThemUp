@@ -8,8 +8,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField] private float _limitNearTarget = 1f;
     [SerializeField] private float _waitingTimeBeforeAttack = 1f;
-    //[SerializeField] private float _attackDuration = 0.15f;
     [SerializeField] private GameObject _hitbox;
+    
+    [HideInInspector]public bool isAttacking = false;
 
     #endregion
 
@@ -32,11 +33,13 @@ public class EnemyBehaviour : MonoBehaviour
             if (_attackTimer >= _waitingTimeBeforeAttack)
             {
                 _hitbox.SetActive(true);
-                Debug.Log("je tape!"); //WILLY INVOK
+                Debug.Log("je tape");
+                isAttacking = true;
                 _attackTimer = 0f;
             }
         }
-        //_hitbox.SetActive(false);
+        if (!isAttacking)
+            _hitbox.SetActive(false);
     }
 
     #endregion
