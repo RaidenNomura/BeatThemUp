@@ -92,10 +92,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyStateMode.WALK:
-
                 //should have condtition to go back Idle
-
-
                 break;
 
             case EnemyStateMode.ATTACK: //on attack depuis la position idle
