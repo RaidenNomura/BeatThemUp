@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 enum EnemyStateMode
@@ -26,6 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+        _isAttacking = GetComponent<EnemyBehaviour>().isAttacking;
     }
 
     void Start()
@@ -69,6 +71,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyStateMode.ATTACK:
                 _animator.SetBool("isAttacking", false);
+                GetComponent<EnemyBehaviour>().isAttacking = false; //pas sure que ca modify la valeur sur le scritp Enemy// override?
                 break;
             case EnemyStateMode.HURT:
                 _animator.SetBool("isHurting", false);
@@ -88,6 +91,12 @@ public class EnemyStateMachine : MonoBehaviour
                 //should have moveDetection with transform
 
                 //ATTACK
+                _isAttacking = GetComponent<EnemyBehaviour>().isAttacking;
+                Debug.Log("Value of is Attacking = " + _isAttacking);
+                if(_isAttacking)
+                {
+                    TransitionToState(EnemyStateMode.ATTACK);
+                }
                 //should have condition to attack player
                 break;
 
@@ -96,7 +105,8 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyStateMode.ATTACK: //on attack depuis la position idle
-                //need condition to go back idle
+                //should add bool attack finish?
+                TransitionToState(EnemyStateMode.IDLE); //on retourne ensuite en idle
                 break;
 
             case EnemyStateMode.HURT:
@@ -124,6 +134,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Animator _animator;
     private bool _isAttacking;
+    private EnemyBehaviour _enemyBehaviour;
 
     #endregion
 }
