@@ -10,6 +10,9 @@ public class lifeManagement : MonoBehaviour
     [SerializeField] private int _lifePoint;
     [SerializeField] private int _damageValue = 10;
     [SerializeField] private GameObject _gameObject;
+    
+    [HideInInspector] public bool isHurting = false;
+    [HideInInspector] public bool isDead = false;
 
     #endregion
 
@@ -27,7 +30,8 @@ public class lifeManagement : MonoBehaviour
 
     private void Update()
     {
-
+        if (_lifePoint <= 0)
+            isDead = true;
     }
 
     #endregion
@@ -39,11 +43,13 @@ public class lifeManagement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyHand") && _gameObject.CompareTag("Player"))
         {
+            isHurting = true;
             Debug.Log("hit");
             _lifePoint -= _damageValue;
         }
         if (collision.gameObject.CompareTag("PlayerHand") && _gameObject.CompareTag("Enemy"))
         {
+            isHurting = true;
             Debug.Log("hit");
             _lifePoint -= _damageValue;
         }

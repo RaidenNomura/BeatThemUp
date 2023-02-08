@@ -337,6 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea652a650826864abc5173f3b0d32c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limitNearTarget: 1
+  _limitNearTarget: 0.8
   _waitingTimeBeforeAttack: 1
   _hitbox: {fileID: 432366926}
