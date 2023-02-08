@@ -9,6 +9,7 @@ public class lifeManagement : MonoBehaviour
     [SerializeField] private int _maxLifePoint = 100;
     [SerializeField] private int _lifePoint;
     [SerializeField] private int _damageValue = 10;
+    [SerializeField] private GameObject _gameObject;
 
     #endregion
 
@@ -33,11 +34,15 @@ public class lifeManagement : MonoBehaviour
 
     #region Collisions
 
-    // Collision avec l'ennemmi : on décrémente les points de vie courants du joueur
+    // Collision avec l'ennemmi : on décrémente les points de vie du joueur
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Teste si le GameObject avec lequel on est entr? en collision porte le tag Enemy
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("EnemyHand") && _gameObject.CompareTag("Player"))
+        {
+            Debug.Log("hit");
+            _lifePoint -= _damageValue;
+        }
+        if (collision.gameObject.CompareTag("PlayerHand") && _gameObject.CompareTag("Enemy"))
         {
             Debug.Log("hit");
             _lifePoint -= _damageValue;
