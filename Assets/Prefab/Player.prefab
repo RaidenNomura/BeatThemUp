@@ -160,6 +160,8 @@ MonoBehaviour:
   _lifePoint: 0
   _damageValue: 10
   _gameObject: {fileID: 2328724044689527617}
+  isHurting: 0
+  isDead: 0
 --- !u!114 &2328724044689527620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +298,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -653709759, guid: 41117c99b451d4c2e80c29c12bb89370, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
