@@ -54,7 +54,7 @@ public class PlayerStateMachine : MonoBehaviour
                 _animator.SetBool("isAttacking", true);
                 break;
             case PlayerStateMode.HIT:
-                _animator.SetBool("isHit", true) ;
+                _animator.SetBool("isHurting", true) ;
                 break;
             default:
                 break;
@@ -76,7 +76,7 @@ public class PlayerStateMachine : MonoBehaviour
                 _animator.SetBool("isAttacking", false);
                 break;
             case PlayerStateMode.HIT:
-                _animator.SetBool("isHit", false);
+                _animator.SetBool("isHurting", false);
                 break;
             default:
                 break;
