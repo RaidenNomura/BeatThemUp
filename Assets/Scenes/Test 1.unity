@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2328724044689527616, guid: c31432bcfaf611041a32e37249540b29, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2328724044689527617, guid: c31432bcfaf611041a32e37249540b29, type: 3}
       propertyPath: m_Name
       value: Player
@@ -355,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 334663249, guid: 2416bb28c369ae64a9c7c57ccc910068, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2088904665839774043, guid: 2416bb28c369ae64a9c7c57ccc910068, type: 3}
       propertyPath: m_RootOrder
       value: 1

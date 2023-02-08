@@ -40,6 +40,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         if (!isAttacking)
             _hitbox.SetActive(false);
+        Flip();
     }
 
     #endregion
@@ -59,6 +60,18 @@ public class EnemyBehaviour : MonoBehaviour
     bool IsTargetNearLimit()
     {
         return Vector2.Distance(transform.position, _moveTarget.position) < _limitNearTarget;
+    }
+
+    void Flip()
+    {
+        if (transform.position.x < _moveTarget.position.x)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (transform.position.x > _moveTarget.position.x)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 
     #endregion
