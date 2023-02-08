@@ -123,6 +123,7 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyStateMode _currentState;
 
     private Animator _animator;
+    private bool _isAttacking;
 
     #endregion
 }

@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 2088904665839774041}
   - component: {fileID: 6397184941466561815}
   - component: {fileID: 1581229762}
+  - component: {fileID: 1863411313804102257}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -325,6 +326,8 @@ MonoBehaviour:
   _lifePoint: 0
   _damageValue: 10
   _gameObject: {fileID: 2088904665839774044}
+  isHurting: 0
+  isDead: 0
 --- !u!114 &1581229762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +343,16 @@ MonoBehaviour:
   _limitNearTarget: 0.8
   _waitingTimeBeforeAttack: 1
   _hitbox: {fileID: 432366926}
+  isAttacking: 0
+--- !u!114 &1863411313804102257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088904665839774044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a36e8d307b330640816be92199ee553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
