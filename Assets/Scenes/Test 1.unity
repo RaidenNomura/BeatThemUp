@@ -262,14 +262,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2328724044689527618, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: test
-      value: 
-      objectReference: {fileID: 1991257018}
-    - target: {fileID: 2328724044689527618, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: _gameObject
-      value: 
-      objectReference: {fileID: 1991257018}
+    - target: {fileID: 2328724044689527619, guid: c31432bcfaf611041a32e37249540b29, type: 3}
+      propertyPath: m_Size.x
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328724044689527619, guid: c31432bcfaf611041a32e37249540b29, type: 3}
+      propertyPath: m_Size.y
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328724044689527619, guid: c31432bcfaf611041a32e37249540b29, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.045000017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328724044689527619, guid: c31432bcfaf611041a32e37249540b29, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c31432bcfaf611041a32e37249540b29, type: 3}
 --- !u!1001 &1393542504
@@ -279,10 +287,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 432366926, guid: 2416bb28c369ae64a9c7c57ccc910068, type: 3}
-      propertyPath: m_TagString
-      value: EnemyHand
-      objectReference: {fileID: 0}
     - target: {fileID: 2088904665839774043, guid: 2416bb28c369ae64a9c7c57ccc910068, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -333,8 +337,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2416bb28c369ae64a9c7c57ccc910068, type: 3}
---- !u!1 &1991257018 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2328724044689527617, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-  m_PrefabInstance: {fileID: 274201444}
-  m_PrefabAsset: {fileID: 0}
