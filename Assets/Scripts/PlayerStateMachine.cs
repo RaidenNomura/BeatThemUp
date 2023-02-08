@@ -8,7 +8,8 @@ enum PlayerStateMode
     IDLE,
     WALK,
     SPRINT,
-    ATTACK
+    ATTACK,
+    HIT,
 }
 
 
@@ -52,6 +53,9 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerStateMode.ATTACK:
                 _animator.SetBool("isAttacking", true);
                 break;
+            case PlayerStateMode.HIT:
+                _animator.SetBool("isHit", true) ;
+                break;
             default:
                 break;
         }
@@ -71,6 +75,9 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerStateMode.ATTACK:
                 _animator.SetBool("isAttacking", false);
                 break;
+            case PlayerStateMode.HIT:
+                _animator.SetBool("isHit", false);
+                break;
             default:
                 break;
         }
@@ -82,9 +89,16 @@ public class PlayerStateMachine : MonoBehaviour
         {
             case PlayerStateMode.IDLE:
 
+                //WALK
                 float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
-                _animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
+                _animator.SetFloat("moveSpeed", moveSpeedXY); 
+                
+                if(moveSpeedXY > 0.1f)
+                {
+                    TransitionToState(PlayerStateMode.WALK);
+                }
 
+                //ATTACK
                 if (Input.GetKeyDown(KeyCode.W)) // en idle on peut attack
                 {
                     Debug.Log("W is press");
@@ -95,20 +109,30 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerStateMode.WALK:
 
                 //float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
-                //_animator.SetFloat("moveSpeed", moveSpeedXY); //check the name... maybe is MoveSpeedX
+                //_animator.SetFloat("moveSpeed", moveSpeedXY);
 
                 if (Input.GetKeyDown(KeyCode.X)) //si on walk on peut sprint
                 {
                     Debug.Log("X is press");
                     TransitionToState(PlayerStateMode.SPRINT);
                 }
+
+
+                moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
+                if (moveSpeedXY == 0)
+                {
+                    TransitionToState(PlayerStateMode.IDLE);
+                }
+
+
                 break;
 
             case PlayerStateMode.SPRINT: //on suppose quon ne peut sprinter que si on WALK
 
-                if (Input.GetKeyDown(KeyCode.X)) //si on arrete de sprint on passe en walk
+                if (Input.GetKeyUp(KeyCode.X)) //si on arrete de sprint on passe en walk
                 {
-                    TransitionToState(PlayerStateMode.WALK);
+                    Debug.Log("X release");
+                    TransitionToState(PlayerStateMode.IDLE);
                 }
                 break;
 
@@ -119,6 +143,8 @@ public class PlayerStateMachine : MonoBehaviour
                     Debug.Log("W is release");
                     TransitionToState(PlayerStateMode.IDLE);
                 }
+                break;
+            case PlayerStateMode.HIT:
                 break;
 
             default:
