@@ -38,8 +38,10 @@ public class EnemyBehaviour : MonoBehaviour
                 _attackTimer = 0f;
             }
         }
+        /*
         if (!isAttacking)
             _hitbox.SetActive(false);
+        */
         Flip();
     }
 
