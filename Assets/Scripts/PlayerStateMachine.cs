@@ -10,7 +10,8 @@ enum PlayerStateMode
     SPRINT,
     ATTACK,
     HIT,
-    PICK
+    PICK,
+    DEAD
 }
 
 
@@ -60,6 +61,9 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerStateMode.PICK:
                 _animator.SetBool("isPick", true);
                 break;
+            case PlayerStateMode.DEAD:
+                _animator.SetBool("isDead", true);
+                break;
             default:
                 break;
         }
@@ -84,6 +88,9 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
             case PlayerStateMode.PICK:
                 _animator.SetBool("isPick", false);
+                break;
+            case PlayerStateMode.DEAD:
+                _animator.SetBool("isDead", false);
                 break;
             default:
                 break;
@@ -168,7 +175,11 @@ public class PlayerStateMachine : MonoBehaviour
                     TransitionToState(PlayerStateMode.IDLE);
                 }
                 break;
-
+                /*
+            case PlayerStateMode.DEAD:
+                _animator.SetBool("isDead", true);
+                break;
+                */
             default:
                 break;
         }
