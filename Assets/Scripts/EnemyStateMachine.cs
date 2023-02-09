@@ -49,7 +49,7 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyStateMode.IDLE:
                 break;
             case EnemyStateMode.WALK:
-                _animator.SetBool("isMove", true);
+                _animator.SetBool("isMoving", true);
                 break;
             case EnemyStateMode.ATTACK:
                 _animator.SetBool("isAttacking", true);
@@ -70,7 +70,7 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyStateMode.IDLE:
                 break;
             case EnemyStateMode.WALK:
-                _animator.SetBool("isMove", false);
+                _animator.SetBool("isMoving", false);
                 break;
             case EnemyStateMode.ATTACK:
                 _animator.SetBool("isAttacking", false);
@@ -103,6 +103,17 @@ public class EnemyStateMachine : MonoBehaviour
                 {
                     TransitionToState(EnemyStateMode.ATTACK);
                 }
+                //HURT
+                if(GetComponent<lifeManagement>().isHurting)
+                {
+                    TransitionToState(EnemyStateMode.HURT);
+                }
+                //DEAD
+                //if(GetComponent<lifeManagement>().isDead)
+                //{
+
+                //}
+
                 break;
 
             case EnemyStateMode.WALK:
@@ -122,7 +133,6 @@ public class EnemyStateMachine : MonoBehaviour
 
             case EnemyStateMode.HURT:
                 break;
-
 
             default:
                 break;
@@ -147,10 +157,10 @@ public class EnemyStateMachine : MonoBehaviour
     #region Private & Protected
 
     private EnemyStateMode _currentState;
-
     private Animator _animator;
     private bool _isAttacking;
     private EnemyBehaviour _enemyBehaviour;
     Vector3 lastPos;
+
     #endregion
 }
