@@ -132,6 +132,10 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyStateMode.HURT:
+                if(GetComponent<lifeManagement>().isHurting == false)
+                {
+                    TransitionToState(EnemyStateMode.IDLE);
+                }
                 break;
 
             default:
