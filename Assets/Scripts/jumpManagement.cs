@@ -17,6 +17,7 @@ public class jumpManagement : MonoBehaviour
     private void Awake()
     {
         _graphics = transform.Find("Graphics");
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -27,18 +28,21 @@ public class jumpManagement : MonoBehaviour
 
     private void Update()
     {
-        jump();
+        Jump();
     }
 
     #endregion
 
     #region Methods
 
-    void jump()
+    void Jump()
     {
         if (Input.GetButton("Jump"))
-            isJumping = true;
-        if (isJumping)
+        {
+            _isJumping = true;
+            _animator.SetBool("isJumping", true);
+        }
+        if (_isJumping)
         {
             if (_jumpTimer < _jumpDuration)
             {
@@ -49,7 +53,8 @@ public class jumpManagement : MonoBehaviour
             else if (_jumpTimer >= _jumpDuration)
             {
                 _jumpTimer = 0f;
-                isJumping = false;
+                _isJumping = false;
+                _animator.SetBool("isJumping", false);
             }
         }
     }
@@ -60,7 +65,8 @@ public class jumpManagement : MonoBehaviour
 
     private Transform _graphics;
     private float _jumpTimer;
-    private bool isJumping = false;
+    private bool _isJumping = false;
+    private Animator _animator;
 
     #endregion
 }

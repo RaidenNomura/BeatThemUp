@@ -12,7 +12,6 @@ public class lifeManagement : MonoBehaviour
     [SerializeField] private GameObject _gameObject;
     
     [HideInInspector] public bool isHurting = false;
-    [HideInInspector] public bool isDead = false;
 
     #endregion
 
@@ -21,6 +20,7 @@ public class lifeManagement : MonoBehaviour
     private void Awake()
     {
         _lifePoint = _maxLifePoint;
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -31,7 +31,7 @@ public class lifeManagement : MonoBehaviour
     private void Update()
     {
         if (_lifePoint <= 0)
-            isDead = true;
+            _animator.SetBool("isDead", true);
     }
 
     #endregion
@@ -65,7 +65,7 @@ public class lifeManagement : MonoBehaviour
 
     #region Private & Protected
 
-
+    private Animator _animator;
 
     #endregion
 }

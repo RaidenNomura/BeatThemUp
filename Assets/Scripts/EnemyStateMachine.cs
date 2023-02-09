@@ -74,7 +74,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyStateMode.ATTACK:
                 _animator.SetBool("isAttacking", false);
-                Debug.Log("Value of is Attacking from EnemyScript" + GetComponent<EnemyBehaviour>().isAttacking);
+                //Debug.Log("Value of is Attacking from EnemyScript" + GetComponent<EnemyBehaviour>().isAttacking);
                 break;
             case EnemyStateMode.HURT:
                 _animator.SetBool("isHurting", false);
@@ -94,7 +94,7 @@ public class EnemyStateMachine : MonoBehaviour
                 //should have moveDetection with transform
                 if(gameObject.transform.position != lastPos)
                 {
-                    Debug.Log("IDLE to WALK cuz move detected");
+                    //Debug.Log("IDLE to WALK cuz move detected");
                     TransitionToState(EnemyStateMode.WALK);
                 }
 
@@ -120,7 +120,7 @@ public class EnemyStateMachine : MonoBehaviour
                 //should have condtition to go back Idle
                 if (gameObject.transform.position == lastPos)
                 {
-                    Debug.Log("WALK to IDLE cuz no move");
+                    //Debug.Log("WALK to IDLE cuz no move");
                     TransitionToState(EnemyStateMode.IDLE);
                 }
                 break;
@@ -152,7 +152,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void FixedUpdate()
     {
-       lastPos= gameObject.transform.position; //dans le fix update il se synchro a un timming different de update state... 
+        lastPos= gameObject.transform.position; //dans le fix update il se synchro a un timming different de update state... 
     }
 
     #endregion

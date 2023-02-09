@@ -26,17 +26,7 @@ public class movementManagement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
-        {
-            _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed * _sprintBoost;
-            _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed * _sprintBoost;
-        }
-        else
-        {
-            _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed;
-            _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed;
-        }
-
+        Mouvement();
     }
 
     private void FixedUpdate()
@@ -56,7 +46,19 @@ public class movementManagement : MonoBehaviour
 
     #region Methods
 
-
+    private void Mouvement()
+    {
+        if (Input.GetButton("Fire3"))
+        {
+            _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed * _sprintBoost;
+            _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed * _sprintBoost;
+        }
+        else
+        {
+            _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed;
+            _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed;
+        }
+    }
 
     #endregion
 

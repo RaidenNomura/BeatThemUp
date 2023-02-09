@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 enum PlayerStateMode
@@ -10,8 +11,7 @@ enum PlayerStateMode
     SPRINT,
     ATTACK,
     HIT,
-    PICK,
-    DEAD
+    PICK
 }
 
 
@@ -19,8 +19,9 @@ public class PlayerStateMachine : MonoBehaviour
 {
     #region exposed
 
-    #endregion
+    bool test;
 
+    #endregion
 
     #region Unity Lifecyle
 
@@ -37,6 +38,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         OnStateUpdate();
     }
+
     #endregion
 
     #region Methode
@@ -60,9 +62,6 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
             case PlayerStateMode.PICK:
                 _animator.SetBool("isPick", true);
-                break;
-            case PlayerStateMode.DEAD:
-                _animator.SetBool("isDead", true);
                 break;
             default:
                 break;
@@ -89,9 +88,6 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerStateMode.PICK:
                 _animator.SetBool("isPick", false);
                 break;
-            case PlayerStateMode.DEAD:
-                _animator.SetBool("isDead", false);
-                break;
             default:
                 break;
         }
@@ -113,9 +109,8 @@ public class PlayerStateMachine : MonoBehaviour
                 }
 
                 //ATTACK
-                if (Input.GetKeyDown(KeyCode.W)) // en idle on peut attack
+                if (Input.GetButton("Fire1")) // en idle on peut attack
                 {
-                    Debug.Log("W is press");
                     TransitionToState(PlayerStateMode.ATTACK);
                 }
 
@@ -131,7 +126,7 @@ public class PlayerStateMachine : MonoBehaviour
                 //float moveSpeedXY = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
                 //_animator.SetFloat("moveSpeed", moveSpeedXY);
 
-                if (Input.GetKeyDown(KeyCode.X)) //si on walk on peut sprint
+                if (Input.GetButton("Fire3")) //si on walk on peut sprint
                 {
                     Debug.Log("X is press");
                     TransitionToState(PlayerStateMode.SPRINT);
@@ -149,7 +144,7 @@ public class PlayerStateMachine : MonoBehaviour
 
             case PlayerStateMode.SPRINT: //on suppose quon ne peut sprinter que si on WALK
 
-                if (Input.GetKeyUp(KeyCode.X)) //si on arrete de sprint on passe en walk
+                if (!Input.GetButton("Fire3")) //si on arrete de sprint on passe en walk
                 {
                     Debug.Log("X release");
                     TransitionToState(PlayerStateMode.IDLE);
@@ -158,9 +153,8 @@ public class PlayerStateMachine : MonoBehaviour
 
             case PlayerStateMode.ATTACK: //on attack depuis la position idle
 
-                if (Input.GetKeyUp(KeyCode.W)) //on retourne en IDLE apres atk
+                if (!Input.GetButton("Fire1")) //on retourne en IDLE apres atk
                 {
-                    Debug.Log("W is release");
                     TransitionToState(PlayerStateMode.IDLE);
                 }
                 break;
@@ -175,11 +169,7 @@ public class PlayerStateMachine : MonoBehaviour
                     TransitionToState(PlayerStateMode.IDLE);
                 }
                 break;
-                /*
-            case PlayerStateMode.DEAD:
-                _animator.SetBool("isDead", true);
-                break;
-                */
+
             default:
                 break;
         }
@@ -194,11 +184,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     #endregion
 
-
     #region Private & Protected
 
     private PlayerStateMode _currentState;
-
     private Animator _animator;
 
     #endregion

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 321d2ba1dd2fd4284a0c1e2d8b870941, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -241,12 +241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c277cf2091578438bd48a8fd0f9e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLifePoint: 100
+  _maxLifePoint: 20
   _lifePoint: 0
   _damageValue: 10
   _gameObject: {fileID: 2328724044689527617}
   isHurting: 0
-  isDead: 0
 --- !u!114 &2328724044689527620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,11 +287,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2.0092824
-      outSlope: -2.0092824
+      inSlope: -1.9336542
+      outSlope: -1.9336542
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.0446043
+      inWeight: 0.05141133
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
