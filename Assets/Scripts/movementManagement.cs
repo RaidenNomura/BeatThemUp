@@ -8,6 +8,7 @@ public class movementManagement : MonoBehaviour
     #region Exposed
 
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _sprintBoost = 1.5f;
 
     #endregion
 
@@ -25,8 +26,17 @@ public class movementManagement : MonoBehaviour
 
     private void Update()
     {
-        _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed;
-        _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed;
+        if (Input.GetButton("Fire1"))
+        {
+            _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed * _sprintBoost;
+            _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed * _sprintBoost;
+        }
+        else
+        {
+            _direction.x = Input.GetAxisRaw("Horizontal") * _moveSpeed;
+            _direction.y = Input.GetAxisRaw("Vertical") * _moveSpeed;
+        }
+
     }
 
     private void FixedUpdate()
