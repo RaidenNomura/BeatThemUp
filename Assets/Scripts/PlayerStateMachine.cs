@@ -19,7 +19,7 @@ public class PlayerStateMachine : MonoBehaviour
 {
     #region exposed
 
-    bool test;
+    [SerializeField] private GameObject _hitbox;
 
     #endregion
 
@@ -111,6 +111,7 @@ public class PlayerStateMachine : MonoBehaviour
                 //ATTACK
                 if (Input.GetButton("Fire1")) // en idle on peut attack
                 {
+                    _hitbox.SetActive(true);
                     TransitionToState(PlayerStateMode.ATTACK);
                 }
 
@@ -155,6 +156,7 @@ public class PlayerStateMachine : MonoBehaviour
 
                 if (!Input.GetButton("Fire1")) //on retourne en IDLE apres atk
                 {
+                    _hitbox.SetActive(false);
                     TransitionToState(PlayerStateMode.IDLE);
                 }
                 break;

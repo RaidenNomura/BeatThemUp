@@ -214,10 +214,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2021960189346963643, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2328724044689527616, guid: c31432bcfaf611041a32e37249540b29, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -265,22 +261,6 @@ PrefabInstance:
     - target: {fileID: 2328724044689527617, guid: c31432bcfaf611041a32e37249540b29, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328724044689527618, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: _maxLifePoint
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328724044689527621, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: _jumpCurve.m_Curve.Array.data[1].inSlope
-      value: -1.9336542
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328724044689527621, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: _jumpCurve.m_Curve.Array.data[1].inWeight
-      value: 0.05141133
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328724044689527621, guid: c31432bcfaf611041a32e37249540b29, type: 3}
-      propertyPath: _jumpCurve.m_Curve.Array.data[1].outSlope
-      value: -1.9336542
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c31432bcfaf611041a32e37249540b29, type: 3}

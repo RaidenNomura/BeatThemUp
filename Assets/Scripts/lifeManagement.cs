@@ -49,7 +49,23 @@ public class lifeManagement : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("PlayerHand") && _gameObject.CompareTag("Enemy"))
         {
-            isHurting = true;
+            _animator.SetBool("isHurting", true);
+            Debug.Log("hit");
+            _lifePoint -= _damageValue;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyHand") && _gameObject.CompareTag("Player"))
+        {
+            isHurting = false;
+            Debug.Log("hit");
+            _lifePoint -= _damageValue;
+        }
+        if (collision.gameObject.CompareTag("PlayerHand") && _gameObject.CompareTag("Enemy"))
+        {
+            _animator.SetBool("isHurting", true);
             Debug.Log("hit");
             _lifePoint -= _damageValue;
         }
