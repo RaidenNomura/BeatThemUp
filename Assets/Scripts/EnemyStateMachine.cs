@@ -49,9 +49,11 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyStateMode.IDLE:
                 break;
             case EnemyStateMode.WALK:
+                _animator.SetBool("isMove", true);
                 break;
             case EnemyStateMode.ATTACK:
                 _animator.SetBool("isAttacking", true);
+                GetComponent<EnemyBehaviour>().isAttacking = false;
                 break;
             case EnemyStateMode.HURT:
                 _animator.SetBool("isHurting", true) ;
@@ -68,10 +70,11 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyStateMode.IDLE:
                 break;
             case EnemyStateMode.WALK:
+                _animator.SetBool("isMove", false);
                 break;
             case EnemyStateMode.ATTACK:
                 _animator.SetBool("isAttacking", false);
-                GetComponent<EnemyBehaviour>().isAttacking = false; //pas sure que ca modify la valeur sur le scritp Enemy// override?
+                Debug.Log("Value of is Attacking from EnemyScript" + GetComponent<EnemyBehaviour>().isAttacking);
                 break;
             case EnemyStateMode.HURT:
                 _animator.SetBool("isHurting", false);
@@ -89,23 +92,31 @@ public class EnemyStateMachine : MonoBehaviour
 
                 //WALK
                 //should have moveDetection with transform
+                if(gameObject.transform.position != lastPos)
+                {
+                    Debug.Log("IDLE to WALK cuz move detected");
+                    TransitionToState(EnemyStateMode.WALK);
+                }
 
                 //ATTACK
-                _isAttacking = GetComponent<EnemyBehaviour>().isAttacking;
-                Debug.Log("Value of is Attacking = " + _isAttacking);
-                if(_isAttacking)
+                if(GetComponent<EnemyBehaviour>().isAttacking)
                 {
                     TransitionToState(EnemyStateMode.ATTACK);
                 }
-                //should have condition to attack player
                 break;
 
             case EnemyStateMode.WALK:
                 //should have condtition to go back Idle
+                if (gameObject.transform.position == lastPos)
+                {
+                    Debug.Log("WALK to IDLE cuz no move");
+                    TransitionToState(EnemyStateMode.IDLE);
+                }
                 break;
 
             case EnemyStateMode.ATTACK: //on attack depuis la position idle
                 //should add bool attack finish?
+                GetComponent<EnemyBehaviour>().isAttacking = false;
                 TransitionToState(EnemyStateMode.IDLE); //on retourne ensuite en idle
                 break;
 
@@ -125,6 +136,11 @@ public class EnemyStateMachine : MonoBehaviour
         OnStateEnter();
     }
 
+    private void FixedUpdate()
+    {
+       lastPos= gameObject.transform.position; //dans le fix update il se synchro a un timming different de update state... 
+    }
+
     #endregion
 
 
@@ -135,6 +151,6 @@ public class EnemyStateMachine : MonoBehaviour
     private Animator _animator;
     private bool _isAttacking;
     private EnemyBehaviour _enemyBehaviour;
-
+    Vector3 lastPos;
     #endregion
 }
