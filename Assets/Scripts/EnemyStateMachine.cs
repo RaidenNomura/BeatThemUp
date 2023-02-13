@@ -27,7 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
-        _isAttacking = GetComponent<EnemyBehaviour>().isAttacking;
+        //_isAttacking = GetComponent<EnemyBehaviour>().isAttacking;
     }
 
     void Start()
@@ -78,6 +78,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyStateMode.HURT:
                 _animator.SetBool("isHurting", false);
+
                 break;
             default:
                 break;
@@ -104,8 +105,10 @@ public class EnemyStateMachine : MonoBehaviour
                     TransitionToState(EnemyStateMode.ATTACK);
                 }
                 //HURT
-                if(GetComponent<lifeManagement>().isHurting)
+                if (GetComponent<lifeManagement>().isHurting)
                 {
+                    GetComponent<Score>().AddScore(10);
+                    Debug.Log("TryAddScore");
                     TransitionToState(EnemyStateMode.HURT);
                 }
                 //DEAD
@@ -162,8 +165,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     private EnemyStateMode _currentState;
     private Animator _animator;
-    private bool _isAttacking;
-    private EnemyBehaviour _enemyBehaviour;
+    //private bool _isAttacking;
+    //private EnemyBehaviour _enemyBehaviour;
     Vector3 lastPos;
 
     #endregion
