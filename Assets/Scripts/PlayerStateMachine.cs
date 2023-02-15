@@ -20,6 +20,7 @@ public class PlayerStateMachine : MonoBehaviour
     #region exposed
 
     [SerializeField] private GameObject _hitbox;
+    [SerializeField] private AudioManager _audio;
 
     #endregion
 
@@ -80,6 +81,7 @@ public class PlayerStateMachine : MonoBehaviour
                 _animator.SetBool("isSprinting", false);
                 break;
             case PlayerStateMode.ATTACK:
+                _audio.PlayAttack();
                 _animator.SetBool("isAttacking", false);
                 break;
             case PlayerStateMode.HIT:

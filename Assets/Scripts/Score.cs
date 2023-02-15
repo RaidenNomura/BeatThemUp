@@ -13,6 +13,9 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI scoreDisplay;
     public bool resetScore = false;
 
+    [SerializeField]
+    bool ForceTrueIsHurting;
+    private int ScoreHit;
 
     private static int scoreValue;
     private lifeManagement _lifeManagement;
@@ -41,15 +44,16 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        //not optimised
-        //EnemyObject = GameObject.FindWithTag("Enemy");
-        //isHurting = EnemyObject.GetComponent<lifeManagement>().isHurting;
+        if(ForceTrueIsHurting)
+        {
+            _lifeManagement.isHurting = true;
+        }
 
         isHurting = _lifeManagement.isHurting;
         if(_lifeManagement.isHurting)
         {
             Debug.Log("Add Value of Score");
-            AddScore(10);
+            AddScore(ScoreHit);
         }
     }
 
@@ -57,11 +61,7 @@ public class Score : MonoBehaviour
     // NOT automatically called by Unity, we need to call it ourselves in our code
     public void AddScore(int toAdd)
     {
-        Debug.Log("AddScore Called");
-        // First, update the numerical value of the score (Action 1)
         scoreValue = scoreValue + toAdd;
-
-        // Then, update the display of the score based on the numerical value (Action 2)
         scoreDisplay.text = scoreValue.ToString();
     }
 }
