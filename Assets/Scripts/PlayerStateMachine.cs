@@ -111,7 +111,7 @@ public class PlayerStateMachine : MonoBehaviour
                 }
 
                 //ATTACK
-                if (Input.GetButton("Fire1")) // en idle on peut attack
+                if (Input.GetButtonDown("Fire1")) // en idle on peut attack
                 {
                     _hitbox.SetActive(true);
                     TransitionToState(PlayerStateMode.ATTACK);
@@ -156,11 +156,10 @@ public class PlayerStateMachine : MonoBehaviour
 
             case PlayerStateMode.ATTACK: //on attack depuis la position idle
 
-                if (!Input.GetButton("Fire1")) //on retourne en IDLE apres atk
-                {
+                     //on retourne en IDLE apres atk
                     _hitbox.SetActive(false);
                     TransitionToState(PlayerStateMode.IDLE);
-                }
+
                 break;
             case PlayerStateMode.HIT:
                 break;
