@@ -11,7 +11,6 @@ enum EnemyStateMode
     ATTACK,
     DEATH,
     HURT
-
 }
 
 
