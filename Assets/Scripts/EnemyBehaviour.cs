@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Start()
     {
-        _moveTarget = GameObject.Find("Player").transform;
+        _moveTarget = GameObject.Find("PlayerTest").transform;
     }
 
     private void Update()
@@ -33,7 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (_attackTimer >= _waitingTimeBeforeAttack)
             {
                 _hitbox.SetActive(true);
-                Debug.Log("je tape");
+                //Debug.Log("je tape");
                 isAttacking = true;
                 _attackTimer = 0f;
             }

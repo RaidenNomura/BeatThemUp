@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 2328724044689527616}
   - component: {fileID: 2328724044689527619}
   - component: {fileID: 2328724044689527623}
+  - component: {fileID: 6453067835297864609}
   - component: {fileID: 2328724044689527618}
   - component: {fileID: 2328724044689527620}
   - component: {fileID: 2328724044689527621}
@@ -229,6 +230,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6453067835297864609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328724044689527617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 204e5c606cb9f4344bea601a9d095d61, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b76730ba-ac4e-4102-83ad-295258dc8e67
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: adc639f4-c86c-4c4c-8a8a-2902d2cbe583
+    m_ActionName: Player/Attack[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 50efd986-ff87-414d-87de-b3d087a56fbc
+    m_ActionName: Player/Sprint[/Keyboard/shift]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &2328724044689527618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +287,6 @@ MonoBehaviour:
   _maxLifePoint: 20
   _lifePoint: 0
   _damageValue: 10
-  _gameObject: {fileID: 2328724044689527617}
   isHurting: 0
 --- !u!114 &2328724044689527620
 MonoBehaviour:

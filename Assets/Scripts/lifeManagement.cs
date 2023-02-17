@@ -9,7 +9,6 @@ public class lifeManagement : MonoBehaviour
     [SerializeField] private int _maxLifePoint = 100;
     [SerializeField] private int _lifePoint;
     [SerializeField] private int _damageValue = 10;
-    [SerializeField] private GameObject _gameObject;
     
     [HideInInspector] public bool isHurting = false;
 
@@ -41,13 +40,16 @@ public class lifeManagement : MonoBehaviour
     // Collision avec l'ennemmi : on décrémente les points de vie du joueur
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyHand") && _gameObject.CompareTag("Player"))
+        Debug.Log("coucou");
+        
+        if (collision.gameObject.CompareTag("EnemyHand") && gameObject.CompareTag("Player"))
         {
             isHurting = true;
             Debug.Log("hit");
             _lifePoint -= _damageValue;
         }
-        if (collision.gameObject.CompareTag("PlayerHand") && _gameObject.CompareTag("Enemy"))
+        
+        if (collision.gameObject.CompareTag("PlayerHand") && gameObject.CompareTag("Enemy"))
         {
             _animator.SetBool("isHurting", true);
             Debug.Log("hit");
@@ -57,16 +59,18 @@ public class lifeManagement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyHand") && _gameObject.CompareTag("Player"))
+        
+        if (collision.gameObject.CompareTag("EnemyHand") && gameObject.CompareTag("Player"))
         {
             isHurting = false;
             Debug.Log("hit");
             _lifePoint -= _damageValue;
         }
-        if (collision.gameObject.CompareTag("PlayerHand") && _gameObject.CompareTag("Enemy"))
+        
+        if (collision.gameObject.CompareTag("PlayerHand") && gameObject.CompareTag("Enemy"))
         {
             _animator.SetBool("isHurting", true);
-            Debug.Log("hit");
+            Debug.Log("no hit");
             _lifePoint -= _damageValue;
         }
     }
