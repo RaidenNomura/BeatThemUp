@@ -84,7 +84,7 @@ public class testinput : MonoBehaviour
         {
             _jeCours = true;
             _animator.SetBool("isSprinting", true);
-            _animator.SetBool("isWalking", true);
+            _animator.SetBool("isWalking", false);
         }
         else
         {
